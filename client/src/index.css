@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0a0a0c] text-white font-['Space_Grotesk'] overflow-x-hidden selection:bg-fuchsia-500 selection:text-white;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0c;
+    border-left: 2px solid #3b82f6;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border: 2px solid #0a0a0c;
+  }
+}
+
+@layer components {
+  /* Neo-Brutalist Container / Card */
+  .neo-card {
+    @apply bg-[#0f0f13] border-2 border-[#3b82f6] transition-all duration-200 relative overflow-hidden;
+    box-shadow: 6px 6px 0px #3b82f6;
+  }
+  .neo-card:hover {
+    @apply -translate-x-1 -translate-y-1;
+    box-shadow: 10px 10px 0px #3b82f6;
+  }
+
+  /* Specific color variants for cards */
+  .neo-card-green {
+    @apply border-[#10b981];
+    box-shadow: 6px 6px 0px #10b981;
+  }
+  .neo-card-green:hover {
+    @apply -translate-x-1 -translate-y-1;
+    box-shadow: 10px 10px 0px #10b981;
+  }
+
+  .neo-card-purple {
+    @apply border-[#a855f7];
+    box-shadow: 6px 6px 0px #a855f7;
+  }
+  .neo-card-purple:hover {
+    @apply -translate-x-1 -translate-y-1;
+    box-shadow: 10px 10px 0px #a855f7;
+  }
+
+  .neo-card-yellow {
+    @apply border-[#facc15];
+    box-shadow: 6px 6px 0px #facc15;
+  }
+  .neo-card-yellow:hover {
+    @apply -translate-x-1 -translate-y-1;
+    box-shadow: 10px 10px 0px #facc15;
+  }
+
+  /* Buttons */
+  .neo-btn {
+    @apply bg-[#3b82f6] text-black font-bold uppercase tracking-wider border-2 border-black transition-all duration-150 active:translate-x-1 active:translate-y-1 active:shadow-none inline-flex items-center justify-center gap-2;
+    box-shadow: 4px 4px 0px #000;
+  }
+  .neo-btn:hover {
+    @apply -translate-x-0.5 -translate-y-0.5;
+    box-shadow: 6px 6px 0px #000;
+  }
+  
+  .neo-btn-outline {
+    @apply bg-[#0f0f13] text-[#3b82f6] border-2 border-[#3b82f6] transition-all duration-150 active:translate-x-1 active:translate-y-1 active:shadow-none inline-flex items-center justify-center gap-2;
+    box-shadow: 4px 4px 0px #3b82f6;
+  }
+  .neo-btn-outline:hover {
+    @apply bg-[#3b82f6]/10 -translate-x-0.5 -translate-y-0.5;
+    box-shadow: 6px 6px 0px #3b82f6;
+  }
+
+  /* Neo Badges */
+  .neo-badge {
+    @apply font-['Fira_Code'] font-bold text-xs uppercase px-2 py-1 border-2 border-black bg-white text-black;
+    box-shadow: 2px 2px 0px #000;
+  }
+  .neo-badge-blue {
+    @apply border-[#3b82f6] bg-[#3b82f6]/20 text-[#3b82f6];
+    box-shadow: 2px 2px 0px #3b82f6;
+  }
+  .neo-badge-green {
+    @apply border-[#10b981] bg-[#10b981]/20 text-[#10b981];
+    box-shadow: 2px 2px 0px #10b981;
+  }
+
+  /* Text styling */
+  .text-outline {
+    -webkit-text-stroke: 1px #3b82f6;
+    color: transparent;
+  }
+}
+
+/* Background Grid Pattern */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+}
+
+/* Scroll reveal */
+.rv {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 0.5s ease-out;
+}
+.rv.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Typewriter cursor */
+.term-cursor::after {
+  content: '█';
+  animation: termBlink 1s step-end infinite;
+}
+@keyframes termBlink { 50% { opacity: 0 } }
+
+/* Infinite Running Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 24s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: marquee 16s linear infinite reverse;
+}
+
+/* Custom pulse glow */
+@keyframes cyberGlow {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4)); }
+  50% { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.8)); }
+}
+
+.cyber-glow {
+  animation: cyberGlow 3s ease-in-out infinite;
+}
+
